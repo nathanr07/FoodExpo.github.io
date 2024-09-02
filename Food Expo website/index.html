@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Technology Exhibition</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#categories">Explore Categories</a></li>
+        </ul>
+    </nav>
+
+   
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Food Technology Exhibition</h1>
+            <p>Saint Kentigern College Technology Exhibition</p>
+        </div>
+    </section>
+
+   
+<section class="intro">
+    <div class="intro-content">
+        <div class="slider-container">
+            <div class="slider">
+                <div class="slides">
+               
+                    <img src="Picture1.jpg" alt="Food Image 1">
+                    <img src="Picture 2.jpg" alt="Food Image 2">
+                    <img src="Picture 3.png" alt="Food Image 3">
+                    <img src="Picture 4.jpg" alt="Food Image 4">
+                    <img src="Picture5.jpg" alt="Food Image 5">
+                    <img src="Picture6.jpg" alt="Food Image 6">
+                </div>
+            </div>
+       
+            <button class="prev">&#10094;</button>
+            <button class="next">&#10095;</button>
+        </div>
+
+        <div class="intro-text">
+            <p>Join Saint Kentigern College on Thursday, 29th of August, 2024 from 6:30pm to 8:00pm for an extraordinary evening, at the Food Tech Exhibition with the canapés coming out at 6:45pm. Along with the other talented technology departments, the Food Tech year 11 students have worked hard and are ready to showcase their culinary talents, featuring an array of delicious creations that celebrate innovation and flavour. From savory delights to sweet treats, each dish reflects the unique creativity and hard work of our students. Throughout the night, you'll have the opportunity to sample a variety of dishes, interact with the young chefs behind them, and learn about the inspiration and techniques that brought these culinary masterpieces to life. Whether you're a food enthusiast, a proud parent, or just curious about the world of food technology, there's something for everyone to enjoy. Don't miss this chance to indulge your taste buds and support our talented students!</p>
+        </div>
+    </div>
+</section>
+
+   
+    <section id="gallery" class="gallery">
+        <h2>Gallery</h2>
+        <p>Welcome to the Food Tech Expo 2024 gallery, where you can preview the incredible creations that will be showcased on the night of the exhibition. This gallery features a variety of culinary masterpieces crafted by our talented Year 11 Food Tech students. As you scroll through the gallery you can view each dish that will be displayed on the night and a bit of the thought processes, ingredients used and the techniques they applied to bring their visions to life. This is your opportunity to get a glimpse into what to expect and plan your tasting journey for the night!</p>
+        <p>On the night of the expo, you will have the chance to see these creations up close, taste unique flavors, and learn about the inspirations and stories behind each dish. From traditional favorites to contemporary twists, the gallery provides a sneak peek into the diverse range of foods that will be on display. </p>
+        <button>Full Gallery</button>
+    </section>
+
+   
+    <section id="categories" class="categories">
+        <h2>Explore Categories</h2>
+        <p>Delve into a vibrant culinary journey with our showcase of New Zealand Flavours and Vegetarian Options. This page displays the rich tapestry of Aotearoa’s food culture, featuring traditional ingredients and innovative dished inspired by New Zealand’s heritage. 
+            There is also a section showcasing the vegetarian options that will be there on the night, highlighting the creativity and versatility of plant based cuisine. Whether your a committed vegetarian or just prefer a meet free meal this page will be perfect for you.</p>
+        <button>Discover More</button>
+    </section>
+
+  
+    <section class="students">
+        <h2>Students</h2>
+        <p>This is where you can find each students cuisine. Whether you’re searching for a friend's dish, your child’s culinary project, or simply curious about the impressive range of student recipes, you’ll find all the details you need right here</p>
+        <p>Kate's Bruschetta with Kawakawa Crostini
+            Xavier’s Salmon Blini with Kawakawa Cream
+            Caitlins Eye Fillet and Caramelised Onion Cracker
+            Zoe’s Lamb, Manuka and Potato Fondant Bite
+            Zara’s Beef amd Kumara Empanada
+            Caroline's Honey Soy Chicken on Crispy Rice
+            Ashton’s Tarakihi Ceviche
+            Kate's Ham and Mozzarella on Kawakawa Crostini</p>
+    </section>
+
+    
+    <footer>
+        <div class="footer-left">
+            <p>&copy; 2024 Food Technology Exhibition. All Rights Reserved.</p>
+        </div>
+        <div class="footer-center">
+            <p>Contact us:</p>
+            <p>Email: <a href="mailto:info@foodexpo.com"></a></p>
+            <p>Phone: </p>
+        </div>
+        <div class="footer-right">
+            <p>Relevant Links:</p>
+            <p><a href="#home">Home</a> | <a href="#gallery">Gallery</a> | <a href="#categories">Explore Categories</a></p>
+        </div>
+    </footer>
+
+    <script>
+        let currentIndex = 0;
+        const slides = document.querySelectorAll('.slides img');
+        let autoSlideInterval;
+        const autoSlideDelay = 7000;  // 5 seconds between automatic slides
+        const userInteractionDelay = 10000;  // 10 seconds delay after user interaction
+
+        function showSlide(index) {
+            // Ensure the index wraps around the slide count
+            if (index >= slides.length) {
+                currentIndex = 0;
+            } else if (index < 0) {
+                currentIndex = slides.length - 1;
+            } else {
+                currentIndex = index;
+            }
+
+            // Update the slider position
+            const newTranslateValue = -currentIndex * 100;
+            document.querySelector('.slides').style.transform = `translateX(${newTranslateValue}%)`;
+        }
+
+        function changeSlide(direction) {
+            // Calculate the new index based on direction
+            const newIndex = currentIndex + direction;
+
+            // Show the new slide
+            showSlide(newIndex);
+
+            // Reset auto-slide timer
+            resetAutoSlide();
+        }
+
+        function startAutoSlide() {
+            // Clear any existing interval
+            clearInterval(autoSlideInterval);
+
+            // Start a new interval for automatic sliding
+            autoSlideInterval = setInterval(() => {
+                showSlide(currentIndex + 1);  // Move to the next slide
+            }, autoSlideDelay);
+        }
+
+        function resetAutoSlide() {
+            // Clear the current interval to stop auto-sliding
+            clearInterval(autoSlideInterval);
+
+            // Restart auto-sliding after a user interaction delay
+            setTimeout(() => {
+                startAutoSlide();
+            }, userInteractionDelay);
+        }
+
+        // Event listeners for manual slide navigation
+        document.querySelector('.prev').addEventListener('click', () => changeSlide(-1));
+        document.querySelector('.next').addEventListener('click', () => changeSlide(1));
+
+        // Initialize the slider
+        showSlide(currentIndex);
+
+        // Start automatic sliding
+        startAutoSlide();
+    </script>
+</body>
+</html>
